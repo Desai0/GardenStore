@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title">
+  <title id="title">Садовые инструменты</title>
+  <rect width="800" height="500" fill="#e7e2d4"/>
+  <path d="M260 390 L510 140" stroke="#6e4b32" stroke-width="34" stroke-linecap="round"/>
+  <path d="M500 145 L585 80 L625 120 L555 200 Z" fill="#7e8c8c"/>
+  <path d="M320 405 L500 225" stroke="#486d42" stroke-width="42" stroke-linecap="round"/>
+  <path d="M490 235 C530 170 610 155 650 185 C610 240 545 260 490 235Z" fill="#8ca39a"/>
+  <circle cx="495" cy="230" r="19" fill="#d7bd78"/>
+</svg>

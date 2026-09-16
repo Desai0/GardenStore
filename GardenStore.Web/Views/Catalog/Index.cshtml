@@ -1,0 +1,118 @@
+@model CatalogViewModel
+@{
+    ViewData["Title"] = "Каталог";
+}
+
+<section class="catalog-intro py-5 mb-4">
+    <div class="container">
+        <div class="row align-items-end g-4">
+            <div class="col-lg-8">
+                <h1 class="page-title display-5 fw-semibold mb-3">Товары для сада и спокойного дома</h1>
+                <p class="lead intro-copy mb-0">Небольшой демонстрационный каталог: понятные цены, честные остатки и рабочая корзина.</p>
+            </div>
+            <div class="col-lg-4">
+                <div class="stock-summary" aria-label="Сводка каталога">
+                    <div><span class="stock-summary__value">@Model.TotalProductCount</span><span class="stock-summary__label">товаров</span></div>
+                    <div><span class="stock-summary__value">@Model.AvailableProductCount</span><span class="stock-summary__label">в наличии</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <partial name="_AlertPartial" />
+
+    <div class="filter-panel d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+        <div>
+            <h2 class="h5 mb-1">Фильтр по назначению</h2>
+            <p class="text-secondary mb-0" id="filterSummary">
+                @(Model.SelectedCategory is null ? "Показаны все товары" : $"Категория: {Model.SelectedCategory}")
+            </p>
+        </div>
+        <div class="d-flex flex-wrap gap-2" aria-label="Фильтры каталога">
+            <a class="btn btn-sm rounded-pill @(Model.SelectedCategory is null ? "btn-primary active" : "btn-outline-secondary")"
+               asp-action="Index" data-filter="Все товары" aria-pressed="@(Model.SelectedCategory is null ? "true" : "false")">Все товары</a>
+            @foreach (var category in Model.Categories)
+            {
+                var isActive = category == Model.SelectedCategory;
+                <a class="btn btn-sm rounded-pill @(isActive ? "btn-primary active" : "btn-outline-secondary")"
+                   asp-action="Index" asp-route-category="@category" data-filter="@category" aria-pressed="@(isActive ? "true" : "false")">@category</a>
+            }
+        </div>
+    </div>
+
+    @if (Model.Products.Count == 0)
+    {
+        <div class="alert alert-info" role="status">В этой категории пока нет товаров. Выберите другой фильтр.</div>
+    }
+    else
+    {
+        <div class="row g-4" id="productGrid">
+            @foreach (var product in Model.Products)
+            {
+                var borderClass = product.Stock == 0
+                    ? "border-danger is-unavailable"
+                    : product.DiscountPercent > 30 ? "border-success" : "border-primary";
+                var hitClass = product.IsHit ? "shadow-sm" : string.Empty;
+
+                <div class="col-12 col-md-6 col-lg-4 product-column" data-product-card>
+                    <article class="card h-100 product-card @borderClass @hitClass">
+                        <div class="product-media-wrap position-relative">
+                            <img class="card-img-top img-fluid product-media" src="@product.ImageUrl" alt="@product.Name" />
+                            <div class="position-absolute top-0 start-0 p-3 d-flex flex-wrap gap-2">
+                                @if (product.Stock == 0)
+                                {
+                                    <span class="badge text-bg-danger">Нет в наличии</span>
+                                }
+                                else if (product.IsHit)
+                                {
+                                    <span class="badge text-bg-warning">ХИТ</span>
+                                }
+                                @if (product.DiscountPercent > 30)
+                                {
+                                    <span class="badge text-bg-success">Большая скидка</span>
+                                }
+                                else if (product.HasDiscount)
+                                {
+                                    <span class="badge text-bg-secondary">Скидка @product.DiscountPercent%</span>
+                                }
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex align-items-start justify-content-between gap-3 mb-2">
+                                <h2 class="h4 card-title mb-0">@product.Name</h2>
+                                <span class="inventory-code">#@product.Id.ToString("D3")</span>
+                            </div>
+                            <p class="card-text text-secondary">@product.Description</p>
+
+                            <div class="price-block list-group list-group-horizontal-md mb-4" aria-label="Цены товара">
+                                @if (product.HasDiscount)
+                                {
+                                    <div class="list-group-item flex-fill">
+                                        <span class="price-label">Обычная</span>
+                                        <span class="text-decoration-line-through text-secondary">@product.OldPrice!.Value.ToString("N0") ₽</span>
+                                    </div>
+                                }
+                                <div class="list-group-item flex-fill">
+                                    <span class="price-label">Сейчас</span>
+                                    <strong class="fs-4 text-nowrap">@product.Price.ToString("N0") ₽</strong>
+                                </div>
+                            </div>
+
+                            <div class="mt-auto d-flex align-items-center justify-content-between gap-3">
+                                <span class="small @(product.Stock == 0 ? "text-danger" : "text-success")">
+                                    @(product.Stock == 0 ? "Ожидаем поставку" : $"Остаток: {product.Stock} шт.")
+                                </span>
+                                <form asp-action="AddToCart" method="post">
+                                    <input type="hidden" name="id" value="@product.Id" />
+                                    <button class="btn btn-primary" type="submit" disabled="@(product.Stock == 0)">В корзину</button>
+                                </form>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            }
+        </div>
+    }
+</div>

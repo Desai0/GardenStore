@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title">
+  <title id="title">Растение в горшке</title>
+  <rect width="800" height="500" fill="#dfeadd"/>
+  <circle cx="650" cy="95" r="55" fill="#f2c96d"/>
+  <path d="M400 330 C300 260 285 165 315 115 C390 135 430 215 400 330Z" fill="#4f8a5b"/>
+  <path d="M405 330 C500 255 525 165 495 105 C425 140 380 220 405 330Z" fill="#2f6b3d"/>
+  <path d="M400 330 C360 240 365 150 405 85 C460 160 455 250 400 330Z" fill="#6da874"/>
+  <path d="M305 325 H495 L465 430 H335 Z" fill="#bd7655"/>
+  <path d="M285 305 H515 V340 H285 Z" fill="#d98f68"/>
+</svg>

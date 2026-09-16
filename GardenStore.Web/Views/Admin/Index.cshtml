@@ -1,0 +1,52 @@
+@model AdminViewModel
+@{
+    ViewData["Title"] = "Админ-панель";
+}
+
+<div class="container py-5">
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
+        <div>
+            <h1 class="display-6 fw-semibold mb-2">Контроль остатков</h1>
+            <p class="text-secondary mb-0">Демонстрационная админ-панель без редактирования данных.</p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+            <span class="badge text-bg-dark p-2">Всего: @Model.TotalCount</span>
+            <span class="badge text-bg-success p-2">В наличии: @Model.InStockCount</span>
+            <span class="badge text-bg-warning p-2">Мало: @Model.LowStockCount</span>
+        </div>
+    </div>
+
+    <div class="table-responsive admin-table-wrap">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-dark">
+                <tr><th scope="col">Код</th><th scope="col">Товар</th><th scope="col">Категория</th><th scope="col">Цена</th><th scope="col">Остаток</th><th scope="col">Состояние</th></tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model.Products)
+                {
+                    <tr>
+                        <td class="text-secondary">#@product.Id.ToString("D3")</td>
+                        <td class="fw-semibold">@product.Name</td>
+                        <td>@product.Category</td>
+                        <td class="text-nowrap">@product.Price.ToString("N0") ₽</td>
+                        <td>@product.Stock</td>
+                        <td>
+                            @if (product.Stock == 0)
+                            {
+                                <span class="badge text-bg-danger">Нет в наличии</span>
+                            }
+                            else if (product.Stock < 5)
+                            {
+                                <span class="badge text-bg-warning">Низкий остаток</span>
+                            }
+                            else
+                            {
+                                <span class="badge text-bg-success">Доступен</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

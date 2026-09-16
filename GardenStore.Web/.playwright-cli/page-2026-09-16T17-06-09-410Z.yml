@@ -1,0 +1,47 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - navigation "Основная навигация" [ref=f3e3]:
+      - generic [ref=f3e4]:
+        - link "Зелёная полка" [ref=f3e5] [cursor=pointer]:
+          - /url: /
+          - generic [aria-hidden] [ref=f3e6]: ЗП
+        - generic [ref=f3e8]:
+          - list [ref=f3e9]:
+            - listitem [ref=f3e10]:
+              - link "Каталог" [ref=f3e11] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f3e12]:
+              - link "Корзина 1" [ref=f3e13] [cursor=pointer]:
+                - /url: /Cart
+                - text: Корзина
+                - generic [ref=f3e14]: "1"
+            - listitem [ref=f3e15]:
+              - link "Админ" [ref=f3e16] [cursor=pointer]:
+                - /url: /Admin
+          - button "Личный кабинет" [ref=f3e17] [cursor=pointer]
+  - main [ref=f3e18]:
+    - generic [ref=f3e19]:
+      - heading "Корзина" [level=1] [ref=f3e20]
+      - alert [ref=f3e21]:
+        - text: Товар «Керамический горшок» добавлен в корзину.
+        - button "Закрыть" [ref=f3e22] [cursor=pointer]
+      - generic [ref=f3e23]:
+        - generic [ref=f3e27]:
+          - generic [ref=f3e28]:
+            - heading "Керамический горшок" [level=2] [ref=f3e29]
+            - generic [ref=f3e30]: 1 шт. × 1 290 ₽
+          - strong [ref=f3e31]: 1 290 ₽
+          - button "Удалить" [ref=f3e33] [cursor=pointer]
+        - complementary [ref=f3e35]:
+          - heading "Итого" [level=2] [ref=f3e36]
+          - generic [ref=f3e37]:
+            - generic [ref=f3e38]: Товаров
+            - generic [ref=f3e39]: "1"
+          - generic [ref=f3e40]:
+            - strong [ref=f3e41]: К оплате
+            - strong [ref=f3e42]: 1 290 ₽
+          - button "Оформить заказ" [ref=f3e43] [cursor=pointer]
+  - contentinfo [ref=f3e44]:
+    - generic [ref=f3e45]:
+      - generic [ref=f3e46]: Зелёная полка — учебная витрина товаров
+      - generic [ref=f3e47]: ASP.NET Core MVC · Bootstrap 5

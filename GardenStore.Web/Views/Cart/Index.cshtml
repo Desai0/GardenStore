@@ -1,0 +1,83 @@
+@model CartViewModel
+@{
+    ViewData["Title"] = "Корзина";
+    var hasAlert = TempData.Peek("AlertMessage") is string;
+}
+
+<div class="container py-5">
+    <h1 class="page-title display-6 fw-semibold mb-4">Корзина</h1>
+    <partial name="_AlertPartial" />
+
+    @if (Model.Items.Count == 0 && !hasAlert)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Корзина пуста.</strong> Добавьте товары из каталога, чтобы оформить учебный заказ.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+        </div>
+        <a class="btn btn-primary" asp-controller="Catalog" asp-action="Index">Перейти в каталог</a>
+    }
+    else
+    {
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="list-group cart-list">
+                    @foreach (var item in Model.Items)
+                    {
+                        <div class="list-group-item p-3 p-md-4">
+                            <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-3">
+                                <img class="cart-thumb" src="@item.Product.ImageUrl" alt="" />
+                                <div class="flex-grow-1">
+                                    <h2 class="h5 mb-1">@item.Product.Name</h2>
+                                    <div class="text-secondary">@item.Quantity шт. × @item.Product.Price.ToString("N0") ₽</div>
+                                </div>
+                                <strong class="fs-5 text-nowrap">@item.LineTotal.ToString("N0") ₽</strong>
+                                <form asp-action="Remove" method="post">
+                                    <input type="hidden" name="id" value="@item.Product.Id" />
+                                    <button class="btn btn-sm btn-outline-danger" type="submit">Удалить</button>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <aside class="order-summary p-4">
+                    <h2 class="h4">Итого</h2>
+                    <div class="d-flex justify-content-between mb-2"><span>Товаров</span><span>@Model.ItemCount</span></div>
+                    <div class="d-flex justify-content-between align-items-baseline border-top pt-3 mt-3">
+                        <strong>К оплате</strong><strong class="fs-3">@Model.TotalAmount.ToString("N0") ₽</strong>
+                    </div>
+                    <button type="button" class="btn btn-order w-100 mt-4" data-bs-toggle="modal" data-bs-target="#confirmOrderModal">Оформить заказ</button>
+                </aside>
+            </div>
+        </div>
+
+        <div class="modal fade" id="confirmOrderModal" tabindex="-1" aria-labelledby="confirmOrderModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="confirmOrderModalLabel">Подтверждение заказа</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Оформить учебный заказ на сумму <strong>@Model.TotalAmount.ToString("N0") ₽</strong>?</p>
+                        <ul class="list-group mb-3">
+                            @foreach (var item in Model.Items)
+                            {
+                                <li class="list-group-item d-flex justify-content-between gap-3">
+                                    <span>@item.Product.Name × @item.Quantity</span>
+                                    <span class="text-nowrap">@item.LineTotal.ToString("N0") ₽</span>
+                                </li>
+                            }
+                        </ul>
+                        <p class="small text-secondary mb-0">Оплата не выполняется: проект демонстрационный.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                        <form asp-action="ConfirmOrder" method="post"><button type="submit" class="btn btn-primary">Подтвердить</button></form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

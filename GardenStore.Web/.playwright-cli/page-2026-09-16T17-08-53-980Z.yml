@@ -1,0 +1,87 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - navigation "Основная навигация" [ref=f3e3]:
+      - generic [ref=f3e4]:
+        - link "Зелёная полка" [ref=f3e5] [cursor=pointer]:
+          - /url: /
+          - generic [aria-hidden] [ref=f3e6]: ЗП
+        - generic [ref=f3e8]:
+          - list [ref=f3e9]:
+            - listitem [ref=f3e10]:
+              - link "Каталог" [ref=f3e11] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f3e12]:
+              - link "Корзина 0" [ref=f3e13] [cursor=pointer]:
+                - /url: /Cart
+                - text: Корзина
+                - generic [ref=f3e14]: "0"
+            - listitem [ref=f3e15]:
+              - link "Админ" [ref=f3e16] [cursor=pointer]:
+                - /url: /Admin
+          - button "Личный кабинет" [ref=f3e17] [cursor=pointer]
+  - main [ref=f3e18]:
+    - generic [ref=f3e19]:
+      - generic [ref=f3e20]:
+        - generic [ref=f3e21]:
+          - heading "Контроль остатков" [level=1] [ref=f3e22]
+          - paragraph [ref=f3e23]: Демонстрационная админ-панель без редактирования данных.
+        - generic [ref=f3e24]:
+          - generic [ref=f3e25]: "Всего: 6"
+          - generic [ref=f3e26]: "В наличии: 5"
+          - generic [ref=f3e27]: "Мало: 1"
+      - table [ref=f3e29]:
+        - rowgroup [ref=f3e30]:
+          - row [ref=f3e31]:
+            - columnheader "Код" [ref=f3e32]
+            - columnheader "Товар" [ref=f3e33]
+            - columnheader "Категория" [ref=f3e34]
+            - columnheader "Цена" [ref=f3e35]
+            - columnheader "Остаток" [ref=f3e36]
+            - columnheader "Состояние" [ref=f3e37]
+        - rowgroup [ref=f3e38]:
+          - row [ref=f3e39]:
+            - cell "#001" [ref=f3e40]
+            - cell "Керамический горшок" [ref=f3e41]
+            - cell "Для растений" [ref=f3e42]
+            - cell "1 290 ₽" [ref=f3e43]
+            - cell "8" [ref=f3e44]
+            - cell "Доступен" [ref=f3e45]
+          - row [ref=f3e47]:
+            - cell "#002" [ref=f3e48]
+            - cell "Лейка 5 литров" [ref=f3e49]
+            - cell "Для растений" [ref=f3e50]
+            - cell "790 ₽" [ref=f3e51]
+            - cell "12" [ref=f3e52]
+            - cell "Доступен" [ref=f3e53]
+          - row [ref=f3e55]:
+            - cell "#003" [ref=f3e56]
+            - cell "Садовый секатор" [ref=f3e57]
+            - cell "Инструменты" [ref=f3e58]
+            - cell "1 190 ₽" [ref=f3e59]
+            - cell "5" [ref=f3e60]
+            - cell "Доступен" [ref=f3e61]
+          - row [ref=f3e63]:
+            - cell "#004" [ref=f3e64]
+            - cell "Перчатки для сада" [ref=f3e65]
+            - cell "Инструменты" [ref=f3e66]
+            - cell "490 ₽" [ref=f3e67]
+            - cell "0" [ref=f3e68]
+            - cell "Нет в наличии" [ref=f3e69]
+          - row [ref=f3e71]:
+            - cell "#005" [ref=f3e72]
+            - cell "Уличный фонарь" [ref=f3e73]
+            - cell "Декор" [ref=f3e74]
+            - cell "1 490 ₽" [ref=f3e75]
+            - cell "7" [ref=f3e76]
+            - cell "Доступен" [ref=f3e77]
+          - row [ref=f3e79]:
+            - cell "#006" [ref=f3e80]
+            - cell "Кружка садовода" [ref=f3e81]
+            - cell "Для дома" [ref=f3e82]
+            - cell "1 390 ₽" [ref=f3e83]
+            - cell "4" [ref=f3e84]
+            - cell "Низкий остаток" [ref=f3e85]
+  - contentinfo [ref=f3e87]:
+    - generic [ref=f3e88]:
+      - generic [ref=f3e89]: Зелёная полка — учебная витрина товаров
+      - generic [ref=f3e90]: ASP.NET Core MVC · Bootstrap 5

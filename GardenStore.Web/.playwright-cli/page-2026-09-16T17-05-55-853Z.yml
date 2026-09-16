@@ -1,0 +1,160 @@
+- generic [active] [ref=f2e1]:
+  - banner [ref=f2e2]:
+    - navigation "Основная навигация" [ref=f2e3]:
+      - generic [ref=f2e4]:
+        - link "Зелёная полка" [ref=f2e5] [cursor=pointer]:
+          - /url: /
+          - generic [aria-hidden] [ref=f2e6]: ЗП
+        - generic [ref=f2e8]:
+          - list [ref=f2e9]:
+            - listitem [ref=f2e10]:
+              - link "Каталог" [ref=f2e11] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f2e12]:
+              - link "Корзина 0" [ref=f2e13] [cursor=pointer]:
+                - /url: /Cart
+                - text: Корзина
+                - generic [ref=f2e14]: "0"
+            - listitem [ref=f2e15]:
+              - link "Админ" [ref=f2e16] [cursor=pointer]:
+                - /url: /Admin
+          - button "Личный кабинет" [ref=f2e17] [cursor=pointer]
+  - main [ref=f2e18]:
+    - generic [ref=f2e21]:
+      - generic [ref=f2e22]:
+        - heading "Товары для сада и спокойного дома" [level=1] [ref=f2e23]
+        - paragraph [ref=f2e24]: "Небольшой демонстрационный каталог: понятные цены, честные остатки и рабочая корзина."
+      - generic "Сводка каталога" [ref=f2e26]:
+        - generic [ref=f2e27]:
+          - generic [ref=f2e28]: "6"
+          - generic [ref=f2e29]: товаров
+        - generic [ref=f2e30]:
+          - generic [ref=f2e31]: "5"
+          - generic [ref=f2e32]: в наличии
+    - generic [ref=f2e33]:
+      - generic [ref=f2e34]:
+        - generic [ref=f2e35]:
+          - heading "Фильтр по назначению" [level=2] [ref=f2e36]
+          - paragraph [ref=f2e37]: Показаны все товары
+        - generic "Фильтры каталога" [ref=f2e38]:
+          - link "Все товары" [ref=f2e39] [cursor=pointer]:
+            - /url: /
+          - link "Декор" [ref=f2e40] [cursor=pointer]:
+            - /url: /?category=%D0%94%D0%B5%D0%BA%D0%BE%D1%80
+          - link "Для дома" [ref=f2e41] [cursor=pointer]:
+            - /url: /?category=%D0%94%D0%BB%D1%8F%20%D0%B4%D0%BE%D0%BC%D0%B0
+          - link "Для растений" [ref=f2e42] [cursor=pointer]:
+            - /url: /?category=%D0%94%D0%BB%D1%8F%20%D1%80%D0%B0%D1%81%D1%82%D0%B5%D0%BD%D0%B8%D0%B9
+          - link "Инструменты" [ref=f2e43] [cursor=pointer]:
+            - /url: /?category=%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B
+      - generic [ref=f2e44]:
+        - article [ref=f2e46]:
+          - generic [ref=f2e47]:
+            - img "Керамический горшок" [ref=f2e48]
+            - generic [ref=f2e49]:
+              - generic [ref=f2e50]: ХИТ
+              - generic [ref=f2e51]: Скидка 24%
+          - generic [ref=f2e52]:
+            - generic [ref=f2e53]:
+              - heading "Керамический горшок" [level=2] [ref=f2e54]
+              - generic [ref=f2e55]: "#001"
+            - paragraph [ref=f2e56]: Матовый горшок с поддоном для комнатных растений.
+            - generic "Цены товара" [ref=f2e57]:
+              - generic [ref=f2e58]:
+                - generic [ref=f2e59]: Обычная
+                - text: 1 690 ₽
+              - generic [ref=f2e60]:
+                - generic [ref=f2e61]: Сейчас
+                - strong [ref=f2e62]: 1 290 ₽
+            - generic [ref=f2e63]:
+              - generic [ref=f2e64]: "Остаток: 8 шт."
+              - button "В корзину" [ref=f2e66] [cursor=pointer]
+        - article [ref=f2e68]:
+          - img "Лейка 5 литров" [ref=f2e70]
+          - generic [ref=f2e72]:
+            - generic [ref=f2e73]:
+              - heading "Лейка 5 литров" [level=2] [ref=f2e74]
+              - generic [ref=f2e75]: "#002"
+            - paragraph [ref=f2e76]: Лёгкая лейка с длинным носиком для точного полива.
+            - generic "Цены товара" [ref=f2e77]:
+              - generic [ref=f2e78]:
+                - generic [ref=f2e79]: Сейчас
+                - strong [ref=f2e80]: 790 ₽
+            - generic [ref=f2e81]:
+              - generic [ref=f2e82]: "Остаток: 12 шт."
+              - button "В корзину" [ref=f2e84] [cursor=pointer]
+        - article [ref=f2e86]:
+          - generic [ref=f2e87]:
+            - img "Садовый секатор" [ref=f2e88]
+            - generic [ref=f2e89]: Большая скидка
+          - generic [ref=f2e91]:
+            - generic [ref=f2e92]:
+              - heading "Садовый секатор" [level=2] [ref=f2e93]
+              - generic [ref=f2e94]: "#003"
+            - paragraph [ref=f2e95]: Стальные лезвия и нескользящие ручки для аккуратной обрезки.
+            - generic "Цены товара" [ref=f2e96]:
+              - generic [ref=f2e97]:
+                - generic [ref=f2e98]: Обычная
+                - text: 1 990 ₽
+              - generic [ref=f2e99]:
+                - generic [ref=f2e100]: Сейчас
+                - strong [ref=f2e101]: 1 190 ₽
+            - generic [ref=f2e102]:
+              - generic [ref=f2e103]: "Остаток: 5 шт."
+              - button "В корзину" [ref=f2e105] [cursor=pointer]
+        - article [ref=f2e107]:
+          - generic [ref=f2e108]:
+            - img "Перчатки для сада" [ref=f2e109]
+            - generic [ref=f2e110]: Нет в наличии
+          - generic [ref=f2e112]:
+            - generic [ref=f2e113]:
+              - heading "Перчатки для сада" [level=2] [ref=f2e114]
+              - generic [ref=f2e115]: "#004"
+            - paragraph [ref=f2e116]: Плотные перчатки с дышащей тыльной стороной.
+            - generic "Цены товара" [ref=f2e117]:
+              - generic [ref=f2e118]:
+                - generic [ref=f2e119]: Сейчас
+                - strong [ref=f2e120]: 490 ₽
+            - generic [ref=f2e121]:
+              - generic [ref=f2e122]: Ожидаем поставку
+              - generic [ref=f2e123]:
+                - button "В корзину" [disabled]
+        - article [ref=f2e125]:
+          - generic [ref=f2e126]:
+            - img "Уличный фонарь" [ref=f2e127]
+            - generic [ref=f2e128]: ХИТ
+          - generic [ref=f2e130]:
+            - generic [ref=f2e131]:
+              - heading "Уличный фонарь" [level=2] [ref=f2e132]
+              - generic [ref=f2e133]: "#005"
+            - paragraph [ref=f2e134]: Компактный фонарь на солнечной батарее для дорожек.
+            - generic "Цены товара" [ref=f2e135]:
+              - generic [ref=f2e136]:
+                - generic [ref=f2e137]: Сейчас
+                - strong [ref=f2e138]: 1 490 ₽
+            - generic [ref=f2e139]:
+              - generic [ref=f2e140]: "Остаток: 7 шт."
+              - button "В корзину" [ref=f2e142] [cursor=pointer]
+        - article [ref=f2e144]:
+          - generic [ref=f2e145]:
+            - img "Кружка садовода" [ref=f2e146]
+            - generic [ref=f2e147]: Скидка 22%
+          - generic [ref=f2e149]:
+            - generic [ref=f2e150]:
+              - heading "Кружка садовода" [level=2] [ref=f2e151]
+              - generic [ref=f2e152]: "#006"
+            - paragraph [ref=f2e153]: Матовая керамическая кружка с пробковым основанием.
+            - generic "Цены товара" [ref=f2e154]:
+              - generic [ref=f2e155]:
+                - generic [ref=f2e156]: Обычная
+                - text: 1 790 ₽
+              - generic [ref=f2e157]:
+                - generic [ref=f2e158]: Сейчас
+                - strong [ref=f2e159]: 1 390 ₽
+            - generic [ref=f2e160]:
+              - generic [ref=f2e161]: "Остаток: 4 шт."
+              - button "В корзину" [ref=f2e163] [cursor=pointer]
+  - contentinfo [ref=f2e164]:
+    - generic [ref=f2e165]:
+      - generic [ref=f2e166]: Зелёная полка — учебная витрина товаров
+      - generic [ref=f2e167]: ASP.NET Core MVC · Bootstrap 5

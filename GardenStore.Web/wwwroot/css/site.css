@@ -1,0 +1,242 @@
+:root {
+  --garden-ink: #173126;
+  --garden-green: #285c42;
+  --garden-leaf: #3f7d58;
+  --garden-yellow: #f0c967;
+  --garden-clay: #c86842;
+  --garden-paper: #f5f7f2;
+  --garden-line: #cad6cc;
+}
+
+html {
+  min-height: 100%;
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--garden-ink);
+  background: #fff;
+}
+
+::selection {
+  color: #fff;
+  background: var(--garden-clay);
+}
+
+a {
+  text-underline-offset: 0.2em;
+}
+
+.btn:focus-visible,
+.nav-link:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--garden-yellow);
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+.bg-dark {
+  background-color: var(--garden-ink) !important;
+}
+
+.navbar {
+  min-height: 4.5rem;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.brand-mark {
+  display: inline-grid;
+  width: 2.2rem;
+  height: 2.2rem;
+  place-items: center;
+  color: var(--garden-ink);
+  background: var(--garden-yellow);
+  border-radius: 0.4rem;
+  font-size: 0.75rem;
+}
+
+.catalog-intro {
+  color: #fff;
+  background: var(--garden-green);
+  border-bottom: 5px solid var(--garden-yellow);
+}
+
+.page-title {
+  max-width: 22ch;
+  margin-inline: auto;
+  text-align: center;
+  letter-spacing: -0.035em;
+}
+
+.catalog-intro .page-title {
+  margin-inline: 0;
+  text-align: left;
+}
+
+.intro-copy {
+  max-width: 62ch;
+  color: #dce8df;
+}
+
+.stock-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0.9rem;
+  overflow: hidden;
+}
+
+.stock-summary > div {
+  padding: 1rem;
+}
+
+.stock-summary > div + div {
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.stock-summary__value,
+.stock-summary__label,
+.price-label {
+  display: block;
+}
+
+.stock-summary__value {
+  font-size: 2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.stock-summary__label,
+.price-label {
+  font-size: 0.8rem;
+}
+
+.filter-panel {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--garden-line);
+}
+
+.product-column {
+  margin-bottom: 0.25rem;
+}
+
+.product-card {
+  border-width: 1px;
+  border-radius: 0.9rem;
+  overflow: hidden;
+  transition: transform 180ms ease-out, box-shadow 180ms ease-out;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(23, 49, 38, 0.14);
+}
+
+.product-card.is-unavailable {
+  background: #fff8f5;
+}
+
+.product-media-wrap {
+  background: var(--garden-paper);
+}
+
+.product-media {
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+}
+
+.inventory-code {
+  color: #607269;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.price-block .list-group-item {
+  background: var(--garden-paper);
+  border-color: var(--garden-line);
+}
+
+.price-label {
+  margin-bottom: 0.2rem;
+  color: #607269;
+}
+
+.btn-primary {
+  background-color: var(--garden-green);
+  border-color: var(--garden-green);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #1d4933;
+  border-color: #1d4933;
+}
+
+.btn-order {
+  color: #fff;
+  background-color: var(--garden-clay);
+  border-color: var(--garden-clay);
+}
+
+.btn-order:hover,
+.btn-order:focus {
+  color: #fff;
+  background-color: #aa4c2a;
+  border-color: #aa4c2a;
+}
+
+.cart-thumb {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  background: var(--garden-paper);
+  border-radius: 0.65rem;
+}
+
+.order-summary,
+.admin-table-wrap {
+  background: var(--garden-paper);
+  border: 1px solid var(--garden-line);
+  border-radius: 0.9rem;
+}
+
+footer {
+  background: var(--garden-paper);
+}
+
+@media (max-width: 767.98px) {
+  .catalog-intro .page-title,
+  .page-title,
+  .intro-copy {
+    text-align: center;
+  }
+
+  .catalog-intro .page-title {
+    margin-inline: auto;
+  }
+
+  .product-column {
+    margin-bottom: 1rem;
+  }
+
+  .product-media {
+    height: 13.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

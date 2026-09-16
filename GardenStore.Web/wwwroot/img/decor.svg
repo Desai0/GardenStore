@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title">
+  <title id="title">Садовый фонарь</title>
+  <rect width="800" height="500" fill="#dce7eb"/>
+  <rect y="365" width="800" height="135" fill="#b9c9a8"/>
+  <path d="M400 95 V390" stroke="#343a40" stroke-width="24"/>
+  <path d="M315 120 H485 L455 295 H345 Z" fill="#495057"/>
+  <path d="M350 150 H450 L430 265 H370 Z" fill="#f4d982"/>
+  <path d="M300 120 L400 55 L500 120 Z" fill="#343a40"/>
+  <path d="M325 390 H475" stroke="#343a40" stroke-width="30" stroke-linecap="round"/>
+</svg>
