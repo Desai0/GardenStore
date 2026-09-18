@@ -1,4 +1,4 @@
-@model CatalogViewModel
+﻿@model CatalogViewModel
 @{
     ViewData["Title"] = "Каталог";
 }
@@ -42,13 +42,17 @@
         </div>
     </div>
 
+    @* Задание 2.1: поле поиска — JS слушает событие input *@
+    <input type="text" id="searchInput" class="form-control mb-4" placeholder="Поиск товаров..." />
+
     @if (Model.Products.Count == 0)
     {
         <div class="alert alert-info" role="status">В этой категории пока нет товаров. Выберите другой фильтр.</div>
     }
     else
     {
-        <div class="row g-4" id="productGrid">
+        @* Задание 2.1: id="catalogGrid" — JS вставляет сюда результаты поиска *@
+        <div class="row g-4" id="catalogGrid">
             @foreach (var product in Model.Products)
             {
                 var borderClass = product.Stock == 0
@@ -104,10 +108,12 @@
                                 <span class="small @(product.Stock == 0 ? "text-danger" : "text-success")">
                                     @(product.Stock == 0 ? "Ожидаем поставку" : $"Остаток: {product.Stock} шт.")
                                 </span>
-                                <form asp-action="AddToCart" method="post">
-                                    <input type="hidden" name="id" value="@product.Id" />
-                                    <button class="btn btn-primary" type="submit" disabled="@(product.Stock == 0)">В корзину</button>
-                                </form>
+                                @* Задание 2.2: кнопка с data-product-id — JS берёт id отсюда *@
+                                <button class="btn btn-primary add-to-cart"
+                                        data-product-id="@product.Id"
+                                        @(product.Stock == 0 ? "disabled" : "")>
+                                    В корзину
+                                </button>
                             </div>
                         </div>
                     </article>
@@ -116,3 +122,9 @@
         </div>
     }
 </div>
+
+@* Задание 6.2: search.js и cart.js только на странице каталога *@
+@section Scripts {
+    <script src="~/js/search.js" asp-append-version="true"></script>
+    <script src="~/js/cart.js" asp-append-version="true"></script>
+}

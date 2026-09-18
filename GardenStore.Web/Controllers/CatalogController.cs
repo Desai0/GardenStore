@@ -1,4 +1,4 @@
-using GardenStore.Web.Models;
+﻿using GardenStore.Web.Models;
 using GardenStore.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -47,5 +47,47 @@ public sealed class CatalogController : Controller
         }
 
         return RedirectToAction("Index", "Cart");
+    }
+
+    // Задание 1.1 — AJAX: поиск, возвращает partial _ProductList
+    [HttpGet]
+    public IActionResult Search(string query)
+    {
+        var products = ProductCatalog.All.AsEnumerable();
+        if (!string.IsNullOrEmpty(query))
+        {
+            query = query.ToLower();
+            products = products.Where(p =>
+                p.Name.ToLower().Contains(query) ||
+                p.Description.ToLower().Contains(query));
+        }
+        return PartialView("_ProductList", products);
+    }
+
+    // Задание 1.2 — AJAX: добавление в корзину, возвращает JSON
+    [HttpPost]
+    public IActionResult AddToCartAjax(int id)
+    {
+        var product = ProductCatalog.Find(id);
+        if (product == null)
+            return Json(new { success = false, message = "Товар не найден" });
+
+        HttpContext.Session.AddProductToCart(id);
+        var count = HttpContext.Session.GetCartProductIds().Count;
+
+        return Json(new
+        {
+            success = true,
+            cartCount = count,
+            productName = product.Name
+        });
+    }
+
+    // Задание 1.3 — AJAX: текущее количество товаров в корзине
+    [HttpGet]
+    public IActionResult GetCartCount()
+    {
+        var count = HttpContext.Session.GetCartProductIds().Count;
+        return Json(new { count = count });
     }
 }

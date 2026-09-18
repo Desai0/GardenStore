@@ -1,0 +1,67 @@
+﻿@model IEnumerable<GardenStore.Web.Models.Product>
+
+@foreach (var product in Model)
+{
+    var borderClass = product.Stock == 0
+        ? "border-danger is-unavailable"
+        : product.DiscountPercent > 30 ? "border-success" : "border-primary";
+    var hitClass = product.IsHit ? "shadow-sm" : string.Empty;
+
+    <div class="col-12 col-md-6 col-lg-4 product-column" data-product-card>
+        <article class="card h-100 product-card @borderClass @hitClass">
+            <div class="product-media-wrap position-relative">
+                <img class="card-img-top img-fluid product-media" src="@product.ImageUrl" alt="@product.Name" />
+                <div class="position-absolute top-0 start-0 p-3 d-flex flex-wrap gap-2">
+                    @if (product.Stock == 0)
+                    {
+                        <span class="badge text-bg-danger">Нет в наличии</span>
+                    }
+                    else if (product.IsHit)
+                    {
+                        <span class="badge text-bg-warning">ХИТ</span>
+                    }
+                    @if (product.DiscountPercent > 30)
+                    {
+                        <span class="badge text-bg-success">Большая скидка</span>
+                    }
+                    else if (product.HasDiscount)
+                    {
+                        <span class="badge text-bg-secondary">Скидка @product.DiscountPercent%</span>
+                    }
+                </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex align-items-start justify-content-between gap-3 mb-2">
+                    <h2 class="h4 card-title mb-0">@product.Name</h2>
+                    <span class="inventory-code">#@product.Id.ToString("D3")</span>
+                </div>
+                <p class="card-text text-secondary">@product.Description</p>
+
+                <div class="price-block list-group list-group-horizontal-md mb-4" aria-label="Цены товара">
+                    @if (product.HasDiscount)
+                    {
+                        <div class="list-group-item flex-fill">
+                            <span class="price-label">Обычная</span>
+                            <span class="text-decoration-line-through text-secondary">@product.OldPrice!.Value.ToString("N0") ₽</span>
+                        </div>
+                    }
+                    <div class="list-group-item flex-fill">
+                        <span class="price-label">Сейчас</span>
+                        <strong class="fs-4 text-nowrap">@product.Price.ToString("N0") ₽</strong>
+                    </div>
+                </div>
+
+                <div class="mt-auto d-flex align-items-center justify-content-between gap-3">
+                    <span class="small @(product.Stock == 0 ? "text-danger" : "text-success")">
+                        @(product.Stock == 0 ? "Ожидаем поставку" : $"Остаток: {product.Stock} шт.")
+                    </span>
+                    <button class="btn btn-primary add-to-cart"
+                            data-product-id="@product.Id"
+                            @(product.Stock == 0 ? "disabled" : "")>
+                        В корзину
+                    </button>
+                </div>
+            </div>
+        </article>
+    </div>
+}
